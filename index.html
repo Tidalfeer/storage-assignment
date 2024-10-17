@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html><head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2 Web Storage API</title>
+    <link rel="stylesheet" href="styles.css">
+    <link src="script.js" href="script.js">
+</head>
+
+<body>
+
+    <!--Adds and displays the input box for the user-->
+    <h1> Welcome User!</h1>  
+        <label for="username">Enter username here: </label> 
+        <input type="text" id="username" placeholder="Enter username here:">
+        <br>
+        <button id="save-btn">Save Name</button>
+        <br>
+        <button id="clear-btn">Clear Name</button>
+    
+        <br><br>
+
+
+    <p id="display-name"></p>
+    <!--Displays the saved name.-->
+    <script>
+        var savedName = localStorage.getItem('username'); "No Usernames Saved."
+        document.getElementById("display-name").textContent = savedName;
+
+        document.getElementById("save-btn").addEventListener("click", function() {
+            var username = document.getElementById("username").value;
+            localStorage.setItem('username', username);
+            document.getElementById("display-name").textContent = username;
+        });
+
+            document.getElementById("clear-btn").addEventListener("click", function() {
+                localStorage.removeItem('username');
+                document.getElementById("display-name").textContent = "No Usernames Saved";
+            });
+    </script>
+
+</body>
+
+</html>
